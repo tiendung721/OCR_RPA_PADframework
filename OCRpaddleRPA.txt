@@ -7,7 +7,7 @@ SET OCR5 TO $'''ccv'''
 DISABLE SET OCR6 TO $'''dfs'''
 SET ScriptPath TO $'''D:\\codingpractice\\learnpython\\paddle\\testpd.py'''
 SET PythonPath TO $'''C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'''
-Folder.GetFiles Folder: $'''C:\\Users\\ADMIN\\Desktop\\ocrimg''' FileFilter: $'''*.jpg;*.png''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> ImagesList
+Folder.GetFiles Folder: $'''D:\\codingpractice\\learnpython\\paddle\\ocrimg''' FileFilter: $'''*.jpg;*.png''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> ImagesList
 LOOP FOREACH CurrentImage IN ImagesList
     SET CommandLine TO $'''%PythonPath% %ScriptPath% %CurrentImage% + Text.From(LoopIndex)'''
     Scripting.RunDOSCommand.RunDOSCommand DOSCommandOrApplication: CommandLine WorkingDirectory: $'''D:\\codingpractice\\learnpython\\paddle''' StandardOutput=> CommandOutput StandardError=> CommandErrorOutput ExitCode=> CommandExitCode
@@ -77,4 +77,18 @@ LOOP FOREACH CurrentImage IN ImagesList
     END
     SET LoopIndex TO LoopIndex + 1
 END
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $'''C:\\Users\\ADMIN\\OneDrive - University of Transport and Communications\\Desktop\\test.xlsx''' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Up}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''STT{Right}TrailerNumber{Right}TransportNumber''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''%Transportnumber1%{Left}%TrailerNumber1%{Left}1''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''2{Right}%TrailerNumber2%{Right}%Transportnumber2%''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''%Transportnumber3%{Left}%TrailerNumber3%{Left}3''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''4{Right}%TrailerNumber4%{Right}%Transportnumber4%''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''%Transportnumber5%{Left}%TrailerNumber5%{Left}5''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
+MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}(s)''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: True
 WAIT 10
