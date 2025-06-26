@@ -1,0 +1,80 @@
+SET LoopIndex TO 1
+SET OCR1 TO $'''abc'''
+SET OCR2 TO $'''asd'''
+SET OCR3 TO $'''xyz'''
+SET OCR4 TO $'''qwe'''
+SET OCR5 TO $'''ccv'''
+DISABLE SET OCR6 TO $'''dfs'''
+SET ScriptPath TO $'''D:\\codingpractice\\learnpython\\paddle\\testpd.py'''
+SET PythonPath TO $'''C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'''
+Folder.GetFiles Folder: $'''C:\\Users\\ADMIN\\Desktop\\ocrimg''' FileFilter: $'''*.jpg;*.png''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> ImagesList
+LOOP FOREACH CurrentImage IN ImagesList
+    SET CommandLine TO $'''%PythonPath% %ScriptPath% %CurrentImage% + Text.From(LoopIndex)'''
+    Scripting.RunDOSCommand.RunDOSCommand DOSCommandOrApplication: CommandLine WorkingDirectory: $'''D:\\codingpractice\\learnpython\\paddle''' StandardOutput=> CommandOutput StandardError=> CommandErrorOutput ExitCode=> CommandExitCode
+    File.ReadTextFromFile.ReadText File: $'''D:\\codingpractice\\learnpython\\paddle\\last_output.txt''' Encoding: File.TextFileEncoding.UTF8 Content=> OutputFileName
+    WAIT (File.WaitForFile.Created File: OutputFileName) FOR 10
+    File.ReadTextFromFile.ReadText File: OutputFileName Encoding: File.TextFileEncoding.UTF8 Content=> OutputText
+    IF LoopIndex = 1 THEN
+        SET OCR1 TO OutputText
+    END
+    IF LoopIndex = 2 THEN
+        SET OCR2 TO OutputText
+    END
+    IF LoopIndex = 3 THEN
+        SET OCR3 TO OutputText
+    END
+    IF LoopIndex = 4 THEN
+        SET OCR4 TO OutputText
+    END
+    IF LoopIndex = 5 THEN
+        SET OCR5 TO OutputText
+    END
+    DISABLE IF $'''%LoopIndex%%OCR6%''' = 6 THEN
+        DISABLE SET OCR6 TO OutputText
+    DISABLE END
+    Text.SplitText.Split Text: OutputText StandardDelimiter: Text.StandardDelimiter.NewLine DelimiterTimes: 1 Result=> OCRLines
+    SET i TO 0
+    SET j TO 0
+    SET Flag_Finished TO $'''False'''
+    LOOP FOREACH CurrentLines IN OCRLines
+        LABEL 'LABEL End_OCRLines_Loop'
+        DISABLE IF Flag_Finished = $'''False''' THEN
+            IF Contains(CurrentLines, $'''Transport Number''', False) THEN
+                SET i TO 1
+            END
+            IF i = 1 THEN
+                SET j TO j + 1
+            END
+            IF j = 2 THEN
+                SET TransportNumber TO CurrentLines
+            END
+            IF j = 4 THEN
+                SET TrailerNumber TO CurrentLines
+                IF LoopIndex = 1 THEN
+                    SET TransportNumber1 TO TransportNumber
+                    SET TrailerNumber1 TO TrailerNumber
+                END
+                IF LoopIndex = 2 THEN
+                    SET TransportNumber2 TO TransportNumber
+                    SET TrailerNumber2 TO TrailerNumber
+                END
+                IF LoopIndex = 3 THEN
+                    SET TransportNumber3 TO TransportNumber
+                    SET TrailerNumber3 TO TrailerNumber
+                END
+                IF LoopIndex = 4 THEN
+                    SET TransportNumber4 TO TransportNumber
+                    SET TrailerNumber4 TO TrailerNumber
+                END
+                IF LoopIndex = 5 THEN
+                    SET TransportNumber5 TO TransportNumber
+                    SET TrailerNumber5 TO TrailerNumber
+                END
+                DISABLE SET Flag_Finished TO $'''True'''
+                GOTO 'LABEL End_OCRLines_Loop'
+            END
+        DISABLE END
+    END
+    SET LoopIndex TO LoopIndex + 1
+END
+WAIT 10

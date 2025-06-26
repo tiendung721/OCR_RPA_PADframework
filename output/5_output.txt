@@ -1,0 +1,40 @@
+lTalierLoaalng List
+Print
+Trailer Header Details
+]orun=adura/xsoT=x
+Transportation date
+14/05/2025
+Transportation time
+16:21
+Transport Number
+67,627
+Trailer Number
+YM6122C
+Description
+FG I0LOK YANG 14/05/2025
+251
+Item Status Material
+Material Description
+Batch
+QuantityUnitStor.Unit
+Source Bin
+Dest.Bin
+Y
+234927-1835
+180 KG OPTAMINT@FOR MOUTHCARE11910170
+1,080.000
+KG
+638367274S&C-1201G3ES1-TRANS
+2
+234927-1835
+180KG OPTAMINT@FOR MOUTHCARE11910170
+360.000
+KG
+638367276S&C-1201G3ES1-TRANS
+3
+811163-1804
+25 KG WHITE EXCEL COV
+11910012
+1,000.000
+KG
+638368733S&C-1201G3ES1-TRANS

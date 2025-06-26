@@ -1,0 +1,25 @@
+Print
+Trailer Header Details
+'X'=Lock/empty=Unlock
+K
+Transportation date
+19/05/2025
+Transportation time
+09:41
+Transport Number
+67,686
+Trailer Number
+YM6122C
+Description
+FGTOLOKYANG19/05/2025
+Item Status Material
+Material Description
+Batch
+S
+Quantity Unit Stor.Unit
+Source Bin
+Dest.Bin
+1
+468241-1835
+190KGISLANDESCAPE78766511910017
+3,040.000KG638369979S&C-1201G4ES1-TRANS
