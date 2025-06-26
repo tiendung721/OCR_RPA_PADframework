@@ -50,7 +50,7 @@ Flow thực hiện các bước:
 
 ## ▶️ Hướng dẫn sử dụng
 
-### Bước 1: Cài đặt Python & PaddleOCR
+Bước 1: Cài đặt Python & PaddleOCR
 
 ```bash
 pip install paddleocr
