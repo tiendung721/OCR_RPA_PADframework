@@ -52,7 +52,6 @@ Flow thực hiện các bước:
 
 Bước 1: Cài đặt Python & PaddleOCR
 
-```bash
 pip install paddleocr
 pip install paddlepaddle -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
 ⚠️ PaddleOCR cần máy hỗ trợ AVX. Nếu lỗi, dùng máy khác hoặc môi trường ảo phù hợp.
